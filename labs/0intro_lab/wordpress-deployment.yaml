@@ -1,0 +1,69 @@
+# we could have put everything in a one big YAML file. But it is better to separate as they also server as documentation
+apiVersion: v1
+kind: Service # Define that it is a service.
+# Service (capital S) is about network abstraction
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress # label needed to understand to which part of the app send requests
+spec:
+  ports:
+    - port: 80 # choose port to expose
+  selector: # will balance across the all pods behind it
+    app: wordpress
+    tier: frontend
+  type: LoadBalancer # Here we define type of Service.  If you use cloud - it will spin up a cloud load balancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim # Storage
+metadata:
+  name: wp-pv-claim
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi # we are making a request for 20 Gigs of storage
+---
+apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
+kind: Deployment # Deployment object for Frontend
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      containers:
+        - image: wordpress:4.8-apache # Based on this container image.| Refers to docker image that has required code in it
+          name: wordpress
+          env: # Have env values
+            - name: WORDPRESS_DB_HOST
+              value: wordpress-mysql
+            - name: WORDPRESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass
+                  key: password
+          ports:
+            - containerPort: 80
+              name: wordpress
+          volumeMounts: # And uses storage
+            - name: wordpress-persistent-storage
+              mountPath: /var/www/html
+      volumes:
+        - name: wordpress-persistent-storage
+          persistentVolumeClaim:
+            claimName: wp-pv-claim
