@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
 COPY app.py /usr/src/app/
 COPY templates/index.html /usr/src/app/templates/
 
-# tell the port number the container should expose
+# tell the port number the container should expose. Does not actually make port accessible, just for documentation
 EXPOSE 5000
 
 # run the application
