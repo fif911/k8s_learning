@@ -1,11 +1,11 @@
-apiVersion: apps/v1 
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pingtest
   labels:
     app: pinger
 spec:
-  replicas: 3
+  replicas: 3 # for 3 nodes
   selector:
     matchLabels:
       app: pinger
@@ -17,7 +17,7 @@ spec:
         app: pinger
     spec:
       containers:
-      - image: ubuntu:latest
+      - image: nigelpoulton/acg-web:0.1
         name: ubuntu-ctr
         command:
           - /bin/bash
