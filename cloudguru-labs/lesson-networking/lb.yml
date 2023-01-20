@@ -7,6 +7,29 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 8080
+    - port: 8080
   selector:
     app: hello-world
+
+
+---
+# When to use what https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+# Fanout https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout BE and FE with 1 ingress
+# Load balancer from https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: my-service
+#spec:
+#  selector:
+#    app.kubernetes.io/name: MyApp
+#  ports:
+#    - protocol: TCP
+#      port: 80
+#      targetPort: 9376
+#  clusterIP: 10.0.171.239
+#  type: LoadBalancer
+#status:
+#  loadBalancer:
+#    ingress:
+#      - ip: 192.0.2.127

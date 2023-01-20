@@ -8,3 +8,15 @@ kubectl get all
 kubectl delete -f simple-web.yml 
 kubectl apply -f simple-web.yml 
 ```
+
+## Exam notes
+
+### Quick creation of services
+```bash
+kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0
+kubectl expose deployment hello-minikube1 --type=LoadBalancer --port=8080
+
+kubectl get configmap <configmap-name> 
+kubectl describe configmap <configmap-name> 
+
+```
