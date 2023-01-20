@@ -37,7 +37,7 @@ This layer is composed by many different components, such as (but not restricted
   desired state. Controllers watch the shared state of your cluster through the apiserver (part of the Control Plane).
 * *cloud-controller-manager* Cloud Controller Manager
 
-####          
+####           
 
 ![](https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg)
 
