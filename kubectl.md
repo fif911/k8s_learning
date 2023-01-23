@@ -1,3 +1,7 @@
+# Useful commands in kubectl
+
+Refer to [original guide](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) by kubernetes developers.
+
 ```bash
 
 # Get CIRD blocks of nodes 
@@ -19,6 +23,7 @@ kubectl exec <pod_id> -- printenv # get env variables of the pod
 ## Exam notes
 
 ### Quick creation of services
+
 ```bash
 kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0
 kubectl expose deployment hello-minikube1 --type=LoadBalancer --port=8080
