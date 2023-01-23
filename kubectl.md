@@ -7,6 +7,13 @@ kubectl get nodes -o jsonpath='{.items[*].spec.podCIDR}'
 kubectl get all
 kubectl delete -f simple-web.yml 
 kubectl apply -f simple-web.yml 
+
+kubectl get configmap <configmap-name> 
+kubectl describe configmap <configmap-name> 
+
+kubectl exec -it <pod_id> -- bash # execute command in container (interactive)
+psql -h localhost -U user --password app
+kubectl exec <pod_id> -- printenv # get env variables of the pod 
 ```
 
 ## Exam notes
@@ -16,7 +23,5 @@ kubectl apply -f simple-web.yml
 kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0
 kubectl expose deployment hello-minikube1 --type=LoadBalancer --port=8080
 
-kubectl get configmap <configmap-name> 
-kubectl describe configmap <configmap-name> 
 
 ```
