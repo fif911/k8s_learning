@@ -1,16 +1,16 @@
-# Kubernetes Course (K8s)
+# Kubernetes Learning
 
-**This is me completing Cloud Guru course, and also playing with Docker and K8s**
+**This is me completing A Cloud Guru course, and also playing with Docker and K8s**
 ___
 
 *Kubernetes is a Container orchestrator. And, also, an open-source platform for running cloud-native apps*
 
-[Course link](https://learn.acloud.guru/course/kubernetes-deep-dive/learn/intro/0558a6f1-a3e4-6a18-5edc-77092760b1af/watch)  
+[CloudGuru Course](https://learn.acloud.guru/course/kubernetes-deep-dive/learn/intro/0558a6f1-a3e4-6a18-5edc-77092760b1af/watch)  
 Teacher: Nigel Poulton
 
 ___
 
-#### Lesson plan
+#### Course plan
 
 <img alt="plot" height="300" src="./images/lesson plan.png"/>
 
@@ -18,8 +18,9 @@ ___
 
 For local development:
 
-* Docker
 * Minikube
+* Microk8s
+* K3s
 
 Cloud front (development and hosting in cloud):
 
